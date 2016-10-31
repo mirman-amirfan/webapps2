@@ -1,10 +1,18 @@
-var express = require('express');
-var app = express();
+var express = require("express"); //basically an import command
+var port = 3000;
+var app = express(); //result of express is now "app"
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+app.get("/", function(req, res) { //teaching node server to how to respond to this route
+  res.send("Hello from Node!");
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.get("/greet/:name", function(req, res){ // :name = this can change using req.params
+  var name = req.params.name;
+  res.send("<h1>Hi, " + name + "!</h1>");
+});
+
+app.use(express.static('public'));
+
+app.listen(port, function() {
+  console.log("listening on port " + port.toString());
 });

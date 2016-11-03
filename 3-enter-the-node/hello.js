@@ -11,7 +11,7 @@ app.get("/greet/:name", function(req, res){ // :name = this can change using req
   res.send("<h1>Hi, " + name + "!</h1>");
 });
 
-app.use(express.static('public'));
+app.use('/static', express.static('public'));
 
 app.listen(port, function() {
   console.log("listening on port " + port.toString());

@@ -71,7 +71,7 @@ app.route("/todos/:id")
   loadTodos((json) => {
     const todos = json.data;
     var hunted = todos.filter((check) =>{
-      return check != id;
+      return check.id != id;
     });
     json.data = hunted;
     fs.writeFile("./todos.json", JSON.stringify(json), (err) => {

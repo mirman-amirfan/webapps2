@@ -54,16 +54,14 @@ app.route("/todos/:id")
   const id = parseInt(req.params.id);
   loadTodos((json) => {
     const todos = json.data;
-    console.log(todos);
-    for(let i = 0; i < todos.length; i++){
-      if (i === id){
-        todos[i].completed = req.body.completed;
-        todos[i].text = req.body.text;
+    for(const i in todos){
+      const todo = todos[i]
+      if (todo.id === id){
+        todo.completed = req.body.completed;
+        todo.text = req.body.text;
       }
     }
-    console.log(todos);
     json.data = todos;
-    console.log(json.data);
     fs.writeFile("./todos.json", JSON.stringify(json), (err) => {
       if (err) throw err;
       res.status(200).end();

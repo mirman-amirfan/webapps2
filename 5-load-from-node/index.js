@@ -54,7 +54,7 @@ app.route("/todos/:id")
   const id = parseInt(req.params.id);
   loadTodos((json) => {
     const todos = json.data;
-    for(const i = 0; i < todos.length; i++){
+    for(let i = 0; i < todos.length; i++){
       if (i === id){
         todos[i].completed = req.body.completed;
         todos[i].text = req.body.text;

@@ -1,3 +1,4 @@
+'use strict';
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
@@ -39,7 +40,7 @@ app.route("/todos")
     json.data = todos;
     return saveTodos(json, (err) => {
       if (err) throw err;
-      res.status(200).end();
+      res.status(200).send(json.data);
     });
   })
 });

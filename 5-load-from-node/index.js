@@ -86,3 +86,5 @@ app.route("/todos/:id")
 app.listen(port, () => {
   console.log(`Listening on ${port}!`);
 });
+
+app.use(express.static('public'));
